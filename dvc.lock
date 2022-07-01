@@ -1,0 +1,64 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python3 src/load_data.py --config=params.yaml
+    deps:
+    - path: data_given/SAHeart.csv
+      md5: 73504b11372611e6fa825607d17a2b56
+      size: 22226
+    - path: src/get_data.py
+      md5: 6a3f740b17a3e5a2bdecf894f968be13
+      size: 1046
+    - path: src/load_data.py
+      md5: fd8ed8a4e1d3a7733c33f274a42ba1db
+      size: 672
+    outs:
+    - path: data/raw/SAHeart.csv
+      md5: 21c479bfbe5c05335d65d9f0fe103b3d
+      size: 17269
+  split_data:
+    cmd: python3 src/split_data.py --config=params.yaml
+    deps:
+    - path: data/raw/SAHeart.csv
+      md5: 21c479bfbe5c05335d65d9f0fe103b3d
+      size: 17269
+    - path: src/split_data.py
+      md5: 110348167b9411f03fde6ee590d766ea
+      size: 1073
+    outs:
+    - path: data/processed/test_SAHeart.csv
+      md5: c351634f1e855ca6aec41db030a61ba9
+      size: 8677
+    - path: data/processed/train_SAHeart.csv
+      md5: 71b42d332e4d0fbe3e134c0fd48dafd4
+      size: 8660
+  train_and_evaluate:
+    cmd:
+    - python3 src/train_and_evaluate.py --config=params.yaml
+    - dvc plots show
+    deps:
+    - path: data/processed/test_SAHeart.csv
+      md5: c351634f1e855ca6aec41db030a61ba9
+      size: 8677
+    - path: data/processed/train_SAHeart.csv
+      md5: 71b42d332e4d0fbe3e134c0fd48dafd4
+      size: 8660
+    - path: src/train_and_evaluate.py
+      md5: ddddc6341464ea52d42a919fa7d4634c
+      size: 5174
+    outs:
+    - path: cm.csv
+      md5: b01debbde418dc2e100c753dc8a7536b
+      size: 938
+    - path: report/prc.json
+      md5: 8a8fc7f159e59030662363a2ca564d32
+      size: 263
+    - path: report/roc.json
+      md5: 5a025a6f708985c9c987b4c29559f453
+      size: 340
+    - path: report/scores.json
+      md5: 941e6980fb901e7d4cbd0b8089fc3edd
+      size: 216
+    - path: saved_models/model.joblib
+      md5: e148c501f2d762f382c7f0e7eeecffdc
+      size: 968
