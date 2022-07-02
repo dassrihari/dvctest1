@@ -18,7 +18,9 @@ stages:
     - data/processed/test_SAHeart.csv 
 
   train_and_evaluate:
+    cmd: git config --global --add safe.directory /__w/dvctest1/dvctest1
     cmd: [python3 src/train_and_evaluate.py --config=params.yaml]
+    
     
     deps:
     - data/processed/train_SAHeart.csv
