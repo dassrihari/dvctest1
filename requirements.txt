@@ -1,8 +1,5 @@
-dvc
+wget
 sklearn
 pandas
-numpy
-gunicorn
-logging
-mlflow
-urlparse
+seaborn
+matplotlib
