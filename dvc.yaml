@@ -29,20 +29,6 @@ stages:
     - report/scores.json:
         cache: false
 
-    plots:
-      
-    - report/prc.json:
-        cache: false
-        x: recall
-        y: precision
-    - report/roc.json:
-        cache: false
-        x: fpr
-        y: tpr
-    - cm.csv:
-        cache: false
-        
-
     outs:
     - saved_models/model.joblib
         
