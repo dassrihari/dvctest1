@@ -42,14 +42,14 @@ def train_and_evaluate(config_path):
     #dvclive.log("Test", test_size)
     print(train.head())
     print("Hi1\n")
-    label_encoder = preprocessing.LabelEncoder()
-    print("Hi2", target, "\n");
-    print(train[target].head());
-    train[[target]]= label_encoder.fit_transform(train[[target]])
-    print("Hi3\n");
-    test[[target]]= label_encoder.transform(test[[target]])
-    print("Hi4\n");
+    label_encoder =preprocessing.LabelEncoder()
+    df1 = label_encoder.fit_transform(train[target])
+    df2 = label_encoder.transform(test[target])
     print(train.head())
+    train = train.drop(target, axis=1)
+    test = test.drop(target, axis=1)
+    train['chd'] = df1
+    test['chd'] = df2
     #Merge with main
     train_y = train[target]
     test_y = test[target]
