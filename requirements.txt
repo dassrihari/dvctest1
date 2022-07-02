@@ -2,3 +2,4 @@ dvc
 sklearn
 pandas
 numpy
+numpyencoder
