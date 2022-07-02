@@ -43,7 +43,8 @@ def train_and_evaluate(config_path):
     print(train.head())
     print("Hi1\n")
     label_encoder = preprocessing.LabelEncoder()
-    print("Hi2\n");
+    print("Hi2", target, "\n");
+    print(train[target].head());
     train[target]= label_encoder.fit_transform(train[target])
     print("Hi3\n");
     test[target]= label_encoder.transform(test[target])
