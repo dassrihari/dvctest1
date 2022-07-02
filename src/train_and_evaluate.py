@@ -45,9 +45,9 @@ def train_and_evaluate(config_path):
     label_encoder = preprocessing.LabelEncoder()
     print("Hi2", target, "\n");
     print(train[target].head());
-    train[target]= label_encoder.fit_transform(train[target])
+    train[[target]]= label_encoder.fit_transform(train[[target]])
     print("Hi3\n");
-    test[target]= label_encoder.transform(test[target])
+    test[[target]]= label_encoder.transform(test[[target]])
     print("Hi4\n");
     print(train.head())
     #Merge with main
