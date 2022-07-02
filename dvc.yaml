@@ -18,7 +18,7 @@ stages:
     - data/processed/test_SAHeart.csv 
 
   train_and_evaluate:
-    cmd: [python3 src/train_and_evaluate.py --config=params.yaml, dvc plots show]
+    cmd: [python3 src/train_and_evaluate.py --config=params.yaml]
     
     deps:
     - data/processed/train_SAHeart.csv
