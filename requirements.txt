@@ -3,3 +3,12 @@ sklearn
 pandas
 seaborn
 matplotlib
+dvc
+sklearn
+pandas
+numpy
+gunicorn
+logging
+mlflow
+urlparse
+yaml
