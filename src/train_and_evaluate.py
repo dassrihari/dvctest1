@@ -142,26 +142,26 @@ def train_and_evaluate(config_path):
     print('Average precision-recall score: {0:0.2f}'.format(average_precision))
 
     
-    #with open(scores_file, "w") as f:
-    #    scores = {
-    #        "Train Score": train_score,
-    #        "Test Score": test_score,
-    #        "ROC_AUC": roc_auc,
-    #        "Train Size": train_size,
-    #        "Test Size": test_size,
-    #        "Solver": solver,
-    #        "Accuracy": Logistic_Accuracy
+    with open(scores_file, "w") as f:
+        scores = {
+            "Train Score": train_score,
+            "Test Score": test_score,
+            "ROC_AUC": roc_auc,
+            "Train Size": train_size,
+            "Test Size": test_size,
+            "Solver": solver,
+            "Accuracy": Logistic_Accuracy
             
             
-    #   }
-    #    json.dump(scores, f, indent=4)
+       }
+        json.dump(scores, f, indent=4)
 
 
-    #os.makedirs(model_dir, exist_ok=True)
-    #model_path = os.path.join(model_dir, "model.joblib")
+    os.makedirs(model_dir, exist_ok=True)
+    model_path = os.path.join(model_dir, "model.joblib")
     
-    #joblib.dump(model, model_path)
-    #print("600 KB dataset with solver as saga")
+    joblib.dump(model, model_path)
+    print("600 KB dataset with solver as saga")
 
 
 if __name__=="__main__":
